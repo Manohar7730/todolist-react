@@ -1,0 +1,21 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+}
+
+.Todo {
+    display: flex;
+}
+
+.Status {
+    display: flex;
+}
+
+.edit {
+    width: 15px;
+    height: 100%;
+}
+
+.button {
+    background-color: transparent;
+}
