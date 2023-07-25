@@ -27,7 +27,11 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar />
+        <Navbar
+          totalTodos={data.length}
+          completedTodos={data.filter((todo) => todo.completed).length}
+          remainingTodos={data.filter((todo) => !todo.completed).length}
+        />
         {loader ? (
           <div>
             <Loading />
