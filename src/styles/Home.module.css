@@ -11,9 +11,10 @@
     display: flex;
 }
 
-.edit {
-    width: 15px;
-    height: 100%;
+.edit,
+.delete {
+    width: 20px;
+    height: 80%;
 }
 
 .button {

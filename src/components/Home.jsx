@@ -56,6 +56,24 @@ function Home({ data, setData }) {
     const updatedTodo = { ...todoToToggle, completed: !todoToToggle.completed };
     handleUpdateTodo(updatedTodo);
   };
+  const handleEditTodo = (id) => {
+    setSelectedTodoId(id);
+  };
+  const handleDeleteTodo = async (id) => {
+    try {
+      const response = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete todo");
+      }
+
+      setData((prevData) => prevData.filter((todo) => todo.id !== id));
+    } catch (error) {
+      console.log("Error deleting todo:", error);
+    }
+  };
   return (
     <>
       <AddTodo onAdd={handleAddTodo} />
@@ -88,10 +106,15 @@ function Home({ data, setData }) {
                 <div className={styles.Controls}>
                   <img
                     className={styles.edit}
-                    id="edit"
                     src="https://cdn-icons-png.flaticon.com/128/1342/1342558.png"
                     alt="Edit"
-                    onClick={() => setSelectedTodoId(item.id)}
+                    onClick={() => handleEditTodo(item.id)}
+                  />
+                  <img
+                    className={styles.delete}
+                    src="https://cdn-icons-png.flaticon.com/128/5028/5028066.png"
+                    alt="delete"
+                    onClick={() => handleDeleteTodo(item.id)}
                   />
                 </div>
               </>
