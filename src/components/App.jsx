@@ -33,7 +33,7 @@ function App() {
             <Loading />
           </div>
         ) : (
-          <Home data={data} />
+          <Home data={data} setData={setData} />
         )}
       </div>
     </>
