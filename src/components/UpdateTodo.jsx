@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../styles/UpdateTodo.module.css";
 
 function UpdateTodo({ todo, onUpdate }) {
   const [title, setTitle] = useState(todo.title);

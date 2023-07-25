@@ -89,18 +89,19 @@ function Home({ data, setData }) {
             ) : (
               <>
                 <div className={styles.Status}>
-                  <div className="title">{item.title}</div>
                   <div
                     className={
                       item.completed ? styles.Completed : styles.NotCompleted
                     }
                   >
-                    <input
-                      type="checkbox"
-                      checked={item.completed}
-                      onChange={() => handleToggleTodo(item.id)}
-                    />
+                    {item.title}
                   </div>
+
+                  <input
+                    type="checkbox"
+                    checked={item.completed}
+                    onChange={() => handleToggleTodo(item.id)}
+                  />
                 </div>
 
                 <div className={styles.Controls}>
@@ -110,12 +111,14 @@ function Home({ data, setData }) {
                     alt="Edit"
                     onClick={() => handleEditTodo(item.id)}
                   />
+                  Edit
                   <img
                     className={styles.delete}
                     src="https://cdn-icons-png.flaticon.com/128/5028/5028066.png"
                     alt="delete"
                     onClick={() => handleDeleteTodo(item.id)}
                   />
+                  Delete
                 </div>
               </>
             )}
