@@ -1,8 +1,8 @@
 {
-  "homepage": "https://manohar7730.github.io/todolist-react/",
   "name": "todolist-react",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://manohar7730.github.io/todolist-react/",
   "type": "module",
   "scripts": {
     "dev": "vite",
