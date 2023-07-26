@@ -2,6 +2,7 @@ import { useState } from "react";
 import AddTodo from "./AddTodo";
 import UpdateTodo from "./UpdateTodo";
 import styles from "../styles/Home.module.css";
+import { toast } from "react-toastify";
 
 function Home({ data, setData }) {
   const [selectedTodoId, setSelectedTodoId] = useState(null);
@@ -21,8 +22,10 @@ function Home({ data, setData }) {
       }
       const addTodo = await response.json();
       setData((prevData) => [...prevData, addTodo]);
+      toast.success("Todo Added Successfully");
     } catch (error) {
       console.log("Error in adding Todo", error);
+      toast.error("Error in adding Todo");
     }
   };
   const handleUpdateTodo = async (updatedTodo) => {
@@ -44,8 +47,10 @@ function Home({ data, setData }) {
         );
       });
       setSelectedTodoId(null);
+      toast.info("Todo updated");
     } catch (error) {
       console.log("Error in updating todo", error);
+      toast.error("Error in updating todo");
     }
   };
 
@@ -55,6 +60,11 @@ function Home({ data, setData }) {
 
     const updatedTodo = { ...todoToToggle, completed: !todoToToggle.completed };
     handleUpdateTodo(updatedTodo);
+    if (!todoToToggle.completed) {
+      toast.success("Todo completed successfully");
+    } else {
+      toast.warning("Todo made incomplete");
+    }
   };
   const handleEditTodo = (id) => {
     setSelectedTodoId(id);
@@ -70,8 +80,10 @@ function Home({ data, setData }) {
       }
 
       setData((prevData) => prevData.filter((todo) => todo.id !== id));
+      toast.info("Todo deleted");
     } catch (error) {
       console.log("Error deleting todo:", error);
+      toast.error("Error in deleting Todo");
     }
   };
   return (
